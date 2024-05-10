@@ -1,0 +1,5 @@
+resource A:123460|123459|123499
+resource BB:123459|123499
+resource D:123459
+resource B:123460|123459
+resource C:123460|123459

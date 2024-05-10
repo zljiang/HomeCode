@@ -1,0 +1,10 @@
+# Spring应用名称（微服务名称）
+spring:
+  application:
+    name: manager-system
+  main:
+    allow-circular-references: true
+  jackson:
+    default-property-inclusion: non_empty
+  profiles:
+    active: dev
