@@ -20,6 +20,7 @@ public class Utils {
         } catch (IOException e) {
             rm = new ResultMessage(false, "响应异常，请稍候重试");
         }
+
         out.println(JSON.toJSONString(rm));
         out.flush();
         out.close();

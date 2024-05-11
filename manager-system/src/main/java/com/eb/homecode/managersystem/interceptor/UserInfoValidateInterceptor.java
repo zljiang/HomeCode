@@ -7,13 +7,13 @@ import com.eb.homecode.managersystem.service.UserService;
 import com.eb.homecode.managersystem.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import sun.misc.BASE64Decoder;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class UserInfoValidateInterceptor implements HandlerInterceptor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserInfoValidateInterceptor.class);
 
-    @Resource(name = "userServiceImpl")
+    @Autowired
     private UserService userService;
 
     private BASE64Decoder decoder = new BASE64Decoder();
@@ -66,7 +66,7 @@ public class UserInfoValidateInterceptor implements HandlerInterceptor {
         }
 
         UserInfo existedUser = userService.queryUserById(userInfo.getUserId());
-        if (null == existedUser || !existedUser.equals(userInfo)) {
+        if (null == existedUser) {
             Utils.overrideResponse(response, false, "登录用户不存在");
             return false;
         }
